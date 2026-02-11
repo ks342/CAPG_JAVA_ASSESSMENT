@@ -1,6 +1,6 @@
 package Capgg;
 
-public class SelectionSort1 {
+public class BubbleSort1 {
     public static void main(String[] args) {
         int[] a = {2, 8, 4, 14, 23, 5, 1};
         System.out.println("Before Sorting:");
@@ -8,16 +8,13 @@ public class SelectionSort1 {
             System.out.print(num + " ");
         }
         for (int i = 0; i < a.length - 1; i++) {
-            int minIndex = i;
-
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[j] < a[minIndex]) {
-                    minIndex = j;
+            for (int j = 0; j < a.length - 1 - i; j++) {
+                if (a[j] > a[j + 1]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
                 }
             }
-            int temp = a[minIndex];
-            a[minIndex] = a[i];
-            a[i] = temp;
         }
         System.out.println("\nAfter Sorting:");
         for (int num : a) {

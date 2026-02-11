@@ -1,22 +1,22 @@
 package Capgg;
 import java.util.Scanner;
-class Student16 {
+class Student10 {
     String name;
     int[] marks;
 
-    Student16(String name, int[] marks) {
+    Student10(String name, int[] marks) {
         this.name = name;
         this.marks = marks;
     }
 }
-public class InsertionSort4 {
+public class BubbleSort4{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number of students: ");
         int studentsCount = sc.nextInt();
         System.out.print("Enter number of subjects: ");
         int subjectsCount = sc.nextInt();
-        Student16[] students = new Student16[studentsCount];
+        Student10[] students = new Student10[studentsCount];
         for (int i = 0; i < studentsCount; i++) {
             System.out.print("\nEnter name of student " + (i + 1) + ": ");
             String name = sc.next();
@@ -25,31 +25,35 @@ public class InsertionSort4 {
             for (int j = 0; j < subjectsCount; j++) {
                 marks[j] = sc.nextInt();
             }
-            students[i] = new Student16(name, marks);
+
+            students[i] = new Student10(name, marks);
         }
-        for (int i = 1; i < students.length; i++) {
-            Student16 key = students[i];
-            int j = i - 1;
-            while (j >= 0 && compareMarks(students[j].marks, key.marks) > 0) {
-                students[j + 1] = students[j];
-                j--;
+
+        for (int i = 0; i < students.length - 1; i++) {
+            for (int j = 0; j < students.length - 1 - i; j++) {
+                if (compareMarks(students[j].marks, students[j + 1].marks) > 0) {
+                    Student10 temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
             }
-            students[j + 1] = key;
         }
+
         System.out.println("\nSorted Students:");
-        for (Student16 s : students) {
+        for (Student10 s : students) {
             System.out.print(s.name + " : ");
             for (int m : s.marks) {
                 System.out.print(m + " ");
             }
             System.out.println();
         }
+
         sc.close();
     }
     static int compareMarks(int[] a, int[] b) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
-                return b[i] - a[i];
+                return b[i] - a[i]; 
             }
         }
         return 0;
